@@ -2636,3 +2636,7 @@ input, select, textarea {
 	body.is-preload #bg:before {
 		background-color: #011222;
 	}
+
+	.audio-container {
+		text-align: center; /* Centers inline elements like <audio> */
+	}

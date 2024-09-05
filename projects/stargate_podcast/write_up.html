@@ -38,22 +38,112 @@
 								every episode of the iconic Stargate SG-1 series, analyzing the storylines, characters, and plot twists with an infectious 
 								enthusiasm. As a long-time listener and recent data science graduate, I thought it would be a fascinating challenge to analyze the 
 								podcast's content and uncover hidden patterns. Armed with a dataset of episode summaries, listener predictions, and 
-								host ratings, I embarked on a journey to decode the "Walking Through the Stargate" podcast.
-								
+								host ratings, I embarked on a journey to decode the "Walking Through the Stargate" podcast. And it all started with this: 
+								<div class="audio-container">
+									<audio controls>
+										<source src="Call To Action.mp3" type="audio/mpeg">
+										Your browser does not support the audio element.
+									</audio>
+								</div>
 							</p>
 
-							<iframe width="900" height="600" frameborder="0" scrolling="no" src="//plotly.com/~Cbsiros/8.embed?showlink=false"></iframe>
-							<iframe width="900" height="600" frameborder="0" scrolling="no" src="//plotly.com/~Cbsiros/11.embed?showlink=false"></iframe>
-							<iframe width="900" height="600" frameborder="0" scrolling="no" src="//plotly.com/~Cbsiros/13.embed?showlink=false"></iframe>
-							<iframe width="900" height="600" frameborder="0" scrolling="no" src="//plotly.com/~Cbsiros/15.embed?showlink=false"></iframe>
-							<iframe width="900" height="600" frameborder="0" scrolling="no" src="//plotly.com/~Cbsiros/17.embed?showlink=false"></iframe>
-							<iframe width="900" height="600" frameborder="0" scrolling="no" src="//plotly.com/~Cbsiros/19.embed?showlink=false"></iframe>
-							<iframe width="900" height="600" frameborder="0" scrolling="no" src="//plotly.com/~Cbsiros/25.embed?showlink=false"></iframe>
-							<iframe width="900" height="600" frameborder="0" scrolling="no" src="//plotly.com/~Cbsiros/30.embed?showlink=false"></iframe>
 
-							<h3>Project Code:</h3>
-							<a href="../../projects/movie_analysis/Analyzing Box Office Trends.html" target="_blank">Click here to see my Jupyter Notebook for this project!</a>
-						
+							<p>You just heard the two hosts of the podcast, Brent and Zach! They created this podcast to explore the world of 
+								Stargate together, as Zach has been a fan for years, but Brent had never seen a single episode. So "Walking Through the Stargate" acts a log of 
+								adventures for all of us to hear. In each episode of the podcast, they discuss a single episode of Stargate SG-1. They introduce the episode (by talking about 
+								guest actors, events that occured near the air date, etc), summarize the episode, share their thoughts and reactions, give a rating to the episode, and read
+								listeners submitted predictions of their ratings. I started this journey with some good old fashioned manual data entry. I listened to every single episode and 
+								recorded the host's ratings, and recorded every prediction made during that episode! That is where I would like to start, by analyzing the host's ratings.
+							</p>
+
+							<p  style="margin: 0;">Below, you will find the ratings for every episode reviewed by Brent and Zach, plotted with the episodes in order against the ratings they gave. I do need 
+								to provide a little caveat for the uninitiated: In Walking Through the Stargate, we rate an episode out of 8 Chevrons, which is a reference the titular 
+								device, the Stargate. So think of the scale as 0 to 8, rather than the standard 0 to 10. (As a fun note, the rating system started out of 7 Chevrons, 
+								but when the show introduced a possible 8th, the podcast updated their scale to match!) And with that out of the way, I present every WTTS rating! 
+							</p>
+							<iframe width="900" height="600" frameborder="0" scrolling="no" src="//plotly.com/~Cbsiros/8.embed?showlink=false"></iframe>
+							<ul>
+								<li>Caveat: Later on in WTTS history, the hosts started recording "Second Chance" episodes, where listeners would vote on episodes for them to rewatch, redicuss, 
+									and rereview. This plot was generated with the most up to date ratings, so a given rating may not match what was given in the origianl podcast episode.
+								</li>
+								<li>Caveat: Due to how the plot was generated, the order in which it draws the entries for each host matters, in such that if the hosts gave the same episode
+									the same rating, whoever had their entry drawn first would get covered by the second host. That is why there seems to be more blue dots than yellow, because 
+									Brent's entries were drawn after Zach's. Later on, we discover just how many episodes the hosts gave the same score to. 
+								</li>
+								<li>Interesting Finding: I would love to point out the episode titled "Emancipation," which occupies the very loney spot of being the only episode rated 0. This 
+									episode is well known within the Stargate Fandom as being the worst one, and it fills me with satisfaction to see it alone at the bottom, with such a large 
+									gap separating it from the rest of the episodes. 
+								</li>
+								<li>Interesting Finding: Early into the history of WTTS, there became a running joke that host Brent refused to give half Chevron ratings to episodes. He declares 
+									that he would rather have made a rating scale out of 14 than give half Chevron ratings. This is very clearly shown on this plot, which one noteable exception.
+									Season 4 Episode 8 "The First Ones" was rated 6.5 Chevrons by both hosts!  
+								</li>
+							</ul>
+
+							<p  style="margin: 0;">Next up, I thought it would be interesting to see the differences between the hosts scores for each episode. And what better way to visually see
+								the difference than a heatmap! The brighter the color, the larger the difference! 
+							</p>
+							<iframe width="900" height="600" frameborder="0" scrolling="no" src="//plotly.com/~Cbsiros/13.embed?showlink=false"></iframe>
+							<ul>
+								<li>Caveat: Seasons 1, 8, and 9 do not have 22 episodes, so there are blanks in the corresponding spots. 
+								</li>
+								<li>Interesting Finding: There are two episodes tied for having the biggest difference. Those being Season 4 Episode 15 "Chain Reaction" and Season 7 Epsiode 6
+									"Lifeboat." Both have a difference of 4 Chevrons, both were rated at 3 and 7 Chevrons, but who liked each episode better was different! 
+								</li>
+								<li>Interesting Finding: In Season two, there was a run of 10 episodes where the hosts gave the same rating to each episode. This is by far the largest run of ties! From 
+									Season 2 Epsisode 2 to Season 3 Episode 6, a 27 episode window, 22 of them were rated the same! 
+								</li>
+							</ul>
+
+							This last finding led me to the next graph, where I plot the expanding average difference between the hosts' scores. Expanding average means that I updated the average of all 
+							previous epsiodes whenever I add a new one. You can clearly see where that long stretch of episodes tanks the average difference, before it starts to rise again late season 3. 
+							<iframe width="900" height="600" frameborder="0" scrolling="no" src="//plotly.com/~Cbsiros/15.embed?showlink=false"></iframe>
+
+							<p  style="margin: 0;">To finish this little avenue of discovery, I wanted to find out how many tied ratings there were. Additionally, I wanted to see which host gave higher
+								ratings to more episodes. What I did not expect to see were that 42% of all episodes ended in a tied rating! There was a small difference in the hosts, with Zach rating 
+								just a few more episodes higher than Brent, which probably comes from Zach being a long term fan of Stargate. 
+							</p>
+							<iframe width="900" height="600" frameborder="0" scrolling="no" src="//plotly.com/~Cbsiros/17.embed?showlink=false"></iframe>
+
+							<p  style="margin: 0;">Next, I wanted to see the average Chevron rating of each host per season, to see if there was a trend over time, or if there was one between them.
+								From the following graph, we can see that Zach and Brent are remarkably similar in their average ratings. It is basically a coin flip to see who rated a particular season
+								better. Their relative scores are also exactly the same too. When one host liked the current season better than the last, so did the other host, and vice verse for every
+								single season. 
+							</p> 
+
+							<iframe width="900" height="600" frameborder="0" scrolling="no" src="//plotly.com/~Cbsiros/19.embed?showlink=false"></iframe>
+							<p  style="margin: 0;">This discovery led me to my final graph analyzing the hosts' scores. I had already analyzed the expanding average difference between their scores, 
+								so you can pretty easily predict the shape of this next graph, but I still thought it would be interesting to see the expanding average rating of each host. As predicted, 
+								their score lines become so close over time that you can't really distinguish between the two. Currently, both hosts have an average Chevron rating of about 5. 
+							</p> 
+							<iframe width="900" height="600" frameborder="0" scrolling="no" src="//plotly.com/~Cbsiros/11.embed?showlink=false"></iframe>
+
+							<p  style="margin: 0;">Now we're finally at the listener predictions! To start, lets make sure we're all on the same page. A prediction is counted correct if the listener 
+								manages to accurately guess BOTH hosts INITIAL ratings. Both hosts must be correct, and predictions cannot be made retroactively correct by a Second Chance episodes 
+								(which actually did happen multiple times). I ran a simple calculation to find how many correct predictions each listener had. This 
+								graph spans the entirety of WTTS history, so many of these listeners no longer actively predict on every episodes. The current winner is Sean, with 9 correct predictions! 
+								Runner up is quasi show runner David, with 8! (If anybody is curious enough to look at the code provided, they will see a manual correction to David's score in this section. 
+								Brent and Zach decided to award David with a correct prediction because of a confusion about how to predict for a two part episode.) 
+							</p> 
+							<iframe style="width: 100%; height: 500px;" frameborder="0" scrolling="no" src="//plotly.com/~Cbsiros/25.embed?showlink=false"></iframe>
+
+							<p  style="margin: 0;">I thought it would be really cool to plot how many guesses each listener had made against their percentage of correct guesses, which led to this cool graph. 
+								As seems intuitive, the more guesses one makes the lower their percentage seems to be on average. It turns out that two different listeners have a 100% prediction rate, 
+								with each having only made one prediction. Go Carrie and Mcjeston! 
+							</p> 
+							<iframe style="width: 100%; height: 500px;" frameborder="0" scrolling="no" src="//plotly.com/~Cbsiros/30.embed?showlink=false"></iframe>
+
+
+
+							<h3>Project Resources:</h3>
+							<ul>
+								<li>
+									<a href="../../projects/stargate_podcast/stargate_podcast_notebook_1.html" target="_blank">Click here to see my web scraping Jupyter Notebook! </a>
+								</li>
+								<li>
+									<a href="../../projects/stargate_podcast/stargate_podcast_notebook_2.html" target="_blank">Click here to see my data visualization Jupyter Notebook! </a>
+								</li>
+							</ul>
 										
 						</div>
 					</div>
